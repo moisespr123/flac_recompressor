@@ -26,6 +26,7 @@ def recompress_flac(file: str, output_folder: str) -> None:
     chunks_size_dir = {}
     print("Processing file {}".format(file))
     pool = Pool()
+    os.makedirs(output_folder, exist_ok=True)
     for FLAC_BLOCK_SIZE in FLAC_BLOCK_SIZES:
         output_file = os.path.join(output_folder, file_basename + "." + str(FLAC_BLOCK_SIZE) + ".flac")
         chunks_size_dir[FLAC_BLOCK_SIZE] = output_file
